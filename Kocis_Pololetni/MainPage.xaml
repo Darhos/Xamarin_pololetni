@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Collection"
+             x:Class="Collection.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+
+        <Entry Text="{Binding Nazev}"
+               x:Name="nazev"/>
+
+        <Entry Text="{Binding Druh}"
+               x:Name="druh"/>
+
+        <Entry Text="{Binding Cislo}"
+               x:Name="cislo"/>
+
+        <Button Text="Přidat"
+                Clicked="Button_OnClick"/>
+
+        <ListView ItemsSource="{Binding Figurky}"
+                  HasUnevenRows="True"
+                  Margin="40,80"
+              ItemTapped="ListView_ItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding Nazev}"/>
+                        <Button Text="Detaily"
+                                IsVisible="{Binding Viditelnost}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+    </Grid>
+
+</ContentPage>
